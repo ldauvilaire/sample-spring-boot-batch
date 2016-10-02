@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="APPLI_NAME" value="sample-spring-boot-batch" />
+	<property name="LOGS_FOLDER" value="./logs" />
+	<property name="LOGS_TO_COLLECT_FOLDER" value="./logs-archives" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{dd/MM/yyyy HH:mm:ss.SSS} [%-5level] ${APPLI_NAME} -%thread- %class.%method %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOGS_FOLDER}/${APPLI_NAME}.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${LOGS_TO_COLLECT_FOLDER}/${APPLI_NAME}.%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+			<maxHistory>16</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d{dd/MM/yyyy HH:mm:ss.SSS} [%-5level] ${APPLI_NAME} %thread- %class.%method %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<logger name="net.ldauvilaire.sample" level="DEBUG" additivity="false">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<root level="WARN">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
