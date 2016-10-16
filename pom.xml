@@ -81,19 +81,13 @@
 			<scope>compile</scope>
 		</dependency>
 		<!-- Dependencies to Third-Party libraries (provided) -->
-		<!-- Dependencies to Third-Party libraries (runtime) -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
 			<version>${hibernate.version}</version>
-			<scope>runtime</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.hibernate.javax.persistence</groupId>
-					<artifactId>hibernate-jpa-2.1-api</artifactId>
-				</exclusion>
-			</exclusions>
+			<scope>provided</scope>
 		</dependency>
+		<!-- Dependencies to Third-Party libraries (runtime) -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>

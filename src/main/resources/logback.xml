@@ -26,6 +26,22 @@
 		</encoder>
 	</appender>
 
+	<logger name="com.mchange" level="INFO" additivity="false">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org.hibernate" level="INFO" additivity="false">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org.springframework" level="INFO" additivity="false">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org.springframework.batch" level="INFO" additivity="false">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</logger>
 	<logger name="net.ldauvilaire.sample" level="DEBUG" additivity="false">
 		<appender-ref ref="FILE" />
 		<appender-ref ref="STDOUT" />

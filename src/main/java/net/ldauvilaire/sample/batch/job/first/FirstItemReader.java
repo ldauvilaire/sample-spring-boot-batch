@@ -2,10 +2,10 @@ package net.ldauvilaire.sample.batch.job.first;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.StepExecution;
-import org.springframework.batch.core.annotation.BeforeStep;
-import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.StepExecutionListener;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -16,9 +16,8 @@ import org.springframework.stereotype.Component;
 import net.ldauvilaire.sample.batch.domain.dto.PersonDTO;
 import net.ldauvilaire.sample.batch.job.JobConstants;
 
-@StepScope
 @Component(JobConstants.FIRST_JOB_ITEM_READER_ID)
-public class FirstItemReader extends FlatFileItemReader<PersonDTO> {
+public class FirstItemReader extends FlatFileItemReader<PersonDTO> implements StepExecutionListener {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FirstItemReader.class);
 
@@ -38,7 +37,7 @@ public class FirstItemReader extends FlatFileItemReader<PersonDTO> {
 		setLineMapper(lineMapper);
 	}
 
-	@BeforeStep
+	@Override
 	public void beforeStep(StepExecution stepExecution) {
 
 		JobParameters jobParameters = stepExecution.getJobParameters();
@@ -47,5 +46,10 @@ public class FirstItemReader extends FlatFileItemReader<PersonDTO> {
 
 		FileSystemResource resource = new FileSystemResource(filePath);
 		setResource(resource);
+	}
+
+	@Override
+	public ExitStatus afterStep(StepExecution stepExecution) {
+		return null;
 	}
 }

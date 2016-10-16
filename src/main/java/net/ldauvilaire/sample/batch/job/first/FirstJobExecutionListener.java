@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
-import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Component;
 import net.ldauvilaire.sample.batch.domain.dto.PersonDTO;
 import net.ldauvilaire.sample.batch.job.JobConstants;
 
-@JobScope
 @Component(JobConstants.FIRST_JOB_EXECUTION_LISTENER_ID)
 public class FirstJobExecutionListener extends JobExecutionListenerSupport {
 

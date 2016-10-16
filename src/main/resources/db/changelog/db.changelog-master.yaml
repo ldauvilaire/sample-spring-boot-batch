@@ -12,7 +12,7 @@ databaseChangeLog:
               - column:
                   name: id
                   type: bigint
-                  autoIncrement: true
+                  valueComputed: person_id_seq.NEXTVAL
                   constraints:
                     primaryKey: true
                     nullable: false

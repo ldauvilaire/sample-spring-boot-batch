@@ -1,7 +1,8 @@
 banner:
   location: classpath:banner.txt
 liquibase:
-  enabled: true
+  enabled:        true
+  change-log:     classpath:/db/changelog/db.changelog-master.yaml
 spring:
   batch:
     initializer:
@@ -15,13 +16,14 @@ spring:
     password:
   jpa:
     show-sql:          true
+    generate-ddl:      false
     hibernate:
-      ddl-auto:        none
+      use-new-id-generator-mappings: SEQUENCE
+      naming:
+         implicit-strategy: jpa
     properties:
       hibernate:
         format_sql:    true
-        hbm2ddl:
-          auto:        validate
         jdbc:
           batch_size:  10
         order_inserts: true
