@@ -53,9 +53,14 @@ public class Application {
 					.desc("use given file for first job")
 					.build());
 
-			CommandLine line = parser.parse(options, args);
+			CommandLine line = null;
+			try {
+				line = parser.parse(options, args);
+			} catch (Exception ex) {
+				LOGGER.error("Une Erreur de parsing des arguments est survenue", ex);
+			}
 
-			if (line.hasOption("first")) {
+			if ((line != null) && (line.hasOption("first"))) {
 				String param = line.getOptionValue("first");
 
 				File firstFile = new File(param);
@@ -67,11 +72,15 @@ public class Application {
 				} else {
 					LOGGER.error("File [{}] does not exists", firstFile);
 					HelpFormatter formatter = new HelpFormatter();
+					System.out.println();
+					System.out.println();
 					formatter.printHelp("sample-spring-boot-batch", options);
 				}
 
 			} else {
 				HelpFormatter formatter = new HelpFormatter();
+				System.out.println();
+				System.out.println();
 				formatter.printHelp("sample-spring-boot-batch", options);
 			}
 		};
