@@ -25,12 +25,13 @@ import org.springframework.beans.BeansException;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import net.ldauvilaire.sample.batch.job.JobConstants;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = { BatchAutoConfiguration.class })
 public class Application {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);

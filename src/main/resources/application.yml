@@ -1,37 +1,9 @@
+liquibase:
+  enabled: false
 spring:
   batch:
     initializer:
       enabled: true
-master:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url:               jdbc:postgresql://localhost:5432/sample
-    username:          sample
-    password:          sample
-    max-pool-size:     10
-  jpa-properties:
-    - key:   hibernate.show_sql
-      value: true
-    - key:   hibernate.format_sql
-      value: true
-    - key:   hibernate.hbm2ddl.auto
-      value: validate
-    - key:   hibernate.jdbc.batch_size
-      value: 10
-    - key:   hibernate.order_inserts
-      value: true
-    - key:   hibernate.order_updates
-      value: true
-tech:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url:               jdbc:postgresql://localhost:5432/tech
-    username:          sample
-    password:          sample
-  jpa-properties:
-    - key:   hibernate.show_sql
-      value: true
-    - key:   hibernate.format_sql
-      value: true
-    - key:   hibernate.hbm2ddl.auto
-      value: update
+first:
+  chunck:
+    size: 10
