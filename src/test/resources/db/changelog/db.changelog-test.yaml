@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 100
+      author: ldauvilaire
+      changes:
+        - createSequence:
+            sequenceName: person_id_seq
+            startValue: 1
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  valueComputed: person_id_seq.NEXTVAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+--  - changeSet:
+--      id: 200
+--      author: ldauvilaire
+--      changes:
+--        - sqlFile:
+--            encoding: utf8
+--            path: classpath:/org/springframework/batch/core/schema-h2.sql
+--            relativeToChangelogFile: false
+--            splitStatements: true
+--            stripComments: true

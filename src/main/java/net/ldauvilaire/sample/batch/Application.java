@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Bean;
 
 import net.ldauvilaire.sample.batch.job.JobConstants;
 
-@SpringBootApplication(exclude = { BatchAutoConfiguration.class })
+@SpringBootApplication
 public class Application {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);

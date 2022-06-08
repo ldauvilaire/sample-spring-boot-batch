@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity(name="person")
-@SequenceGenerator(name="person_id_sequence", sequenceName="person_id_seq")
+@SequenceGenerator(name="person_id_sequence", sequenceName="person_id_seq", allocationSize=1)
 public class Person {
 
 	@Id
